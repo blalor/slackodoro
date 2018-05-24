@@ -28,3 +28,11 @@ If you want to mute multiple profiles at once:
 Or, if you're using [openpomodoro-cli](https://github.com/open-pomodoro/openpomodoro-cli/), which doesn't ([yet!](https://github.com/open-pomodoro/openpomodoro-cli/issues/1)) have native Slack integration:
 
     slackodoro -- pomodoro start --wait
+
+## building
+
+You need an existing Go development environment.
+
+    go get github.com/blalor/slackodoro
+
+Put the resulting `slackodoro` binary into your path.  If you're not sure where that might be, because Go is inscrutible, it's probably in `$( go env GOPATH )/bin`.
