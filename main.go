@@ -150,8 +150,13 @@ func main() {
 	}()
 
 	// run command
-	log.Printf("running %s %v", opts.Command.Argv0, opts.Command.Argv)
-	if err = exec.Command(opts.Command.Argv0, opts.Command.Argv...).Run(); err != nil {
+    cmd := exec.Command(opts.Command.Argv0, opts.Command.Argv...)
+    cmd.Stdin = nil
+    cmd.Stdout = os.Stdout
+    cmd.Stderr = os.Stderr
+
+    log.Printf("running %s %v", opts.Command.Argv0, opts.Command.Argv)
+	if err = cmd.Run(); err != nil {
 		log.Fatalf("error running %s %v: %v", opts.Command.Argv0, opts.Command.Argv, err)
 	}
 }
